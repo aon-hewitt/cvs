@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8" />
+<link href="stylesheets/bootstrap.css" rel="stylesheet" />
+<!--<script src="js/jquery.min.js"></script> -->
+<script src="/js/jquery-1.12.4.min.js"></script>
+<script src="_lib/gitana/gitana.min.js"></script>
+<script>
+    var ourRequest = new XMLHttpRequest();
+
+
+    ourRequest.open('GET', 'https://qa.mbspot2.com/js/cvs_content.json');
+
+    //collect all data from cloud and push to array
+    var nPage = sessionStorage.getItem('pages');
+    nPage = JSON.parse(nPage);
+    ourRequest.onload = function () {
+        if (ourRequest.status >= 200 && ourRequest.status < 400) { 
+            ourData = JSON.parse(ourRequest.responseText);
+            console.log(ourData);
+            var str='';
+              for(var x=0; x< ourData.length ; x++){
+                str +=ourData[x].title
+              } 
+            $("#loadingMessage").append(str);
+        } 
+    }
+    ourRequest.onerror = function () {
+    console.log("Connection error");
+    };
+    ourRequest.send();
+
+
+</script>
+</head>
+<body>
+    <div class="container" style="background-color: #FFF; height: 91px">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <img src="img/logo-cvsh.png" alt="Image" style="margin-top: 12px">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                <h2>Test QA Json</h2>
+                    <div id="loadingMessage" style="margin:40px; font-size:20px"> </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

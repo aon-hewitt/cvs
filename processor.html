@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="stylesheets/bootstrap.css" rel="stylesheet" />
+    <!--<script src="js/jquery.min.js"></script>-->
+   <script src="/js/jquery-1.12.4.min.js"></script>
+    <script src="_lib/gitana/gitana.min.js"></script>
+    <script>
+        var platform;
+        var repository;
+        var branch;
+        var node;
+        var swapNode;
+      var repositoryId = '0da4c0b255d99e3fea3a';
+    var branchId = '93ac3d94f366fcaa21c5';
+        var config;
+
+
+        var draftNodeId;
+        var coreNodeId;
+        var draftStringPresentValue;
+
+
+
+        function swapData() {
+
+            config = {
+                "username": "06fa5ef3-2815-4c06-90b8-936188d17cb1",
+                "password": "roY8ZcOnEKbM5ns8a8qjCJg+xXEdyDslz4Ta4EKGWXNKsqjN2ty2yDJ7BJRYEVPjo0MEryrzHCoTsQET23f2Oe8CNqkcY3fGuYlmjOIfcDs=",
+                "baseURL": "/proxy"
+            }
+
+
+            //var config = {
+            //    "clientKey": "1bd1ddc4-37c7-4c80-b69b-b0d8d226cc34",
+            //    "clientSecret": "CamxJ6k/aNYbuZVV1uTox0imFpsURRugGjt/AD77DGENmJ+U87Z1eh4KBdKtCcY8/Regd9DH8DYWGJ2mcdSCsK3a+aX1WR2ftnxQQ8yg6ck=",
+            //    "username": "",
+            //    "password": "",
+            //    "baseURL": "https://api.cloudcms.com",
+            //    "application": "c8a4dc1dd5644f2934be"
+            //}
+
+            Gitana.connect(config, function(err) {
+                if (err) {
+                    console.log("Error: " + err + window.location.href);
+                    return;
+                }
+            }).then(function() {
+                platform = this;
+                this.readRepository(repositoryId).then(function() {
+                    repository = this;
+                    this.readBranch(branchId).then(function() {
+                        branch = this;
+                                node = this.readNode(coreNodeId).then(function () {
+
+                                    swapNode = branch.readNode(draftNodeId).then(function () {
+
+                                        
+                                            console.log("Changing data on node " + node._doc + "with data from " + swapNode._doc);
+                                            node.title = swapNode.title;
+                                            node.tileId = swapNode.tileId;
+                                            node.section = swapNode.section;
+                                            node.population = swapNode.population;
+                                            node.language = swapNode.language;
+                                            node.hours = swapNode.hours;
+                                            node.startDate = swapNode.startDate;                                            
+                                            node.endDate = swapNode.endDate;
+                                            node.bgImage = swapNode.bgImage;                                            
+                                            node.imageURL = swapNode.imageURL;
+                                            node.color = swapNode.color;
+                                            node.icon = 'spotlight';
+                                            node.tags = swapNode.tags;
+                                            node.body = swapNode.body;
+                                            node.accordions = swapNode.accordions;
+                                            node.allRelated = swapNode.allRelated;  
+
+                                            node.update().then(function () {
+                                                console.log("node updated");
+                                                $("#message").css("display", "block");
+                                                $("#loadingMessage").css("display", "none");
+                                                $("#draftNodeId").html(draftNodeId);
+                                            });
+ 
+                                    });
+                                });
+                    });
+                });
+            });
+        }
+
+
+        function processQueryString() {
+            queryStringPresent();
+            if (draftStringPresentValue == true) {
+                swapData();
+            }
+        }
+
+        function queryStringPresent() {
+
+            var query = window.location.search.substring(1);
+
+            var vars = query.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split('=');
+                if (decodeURIComponent(pair[0]) == 'draft') {
+                    draftNodeId = pair[1];
+                    draftStringPresentValue = true;
+                } else if (decodeURIComponent(pair[0]) == 'core') {
+                    coreNodeId = pair[1];
+                }
+            }
+        }
+
+
+    </script>
+
+
+
+</head>
+<body onload="processQueryString()">
+    <div class="container" style="background-color: #FFF; height: 91px">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <img src="img/logo-cvsh.png" alt="Image" style="margin-top: 12px">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="loadingMessage" style="margin:40px; font-size:20px">Publishing, please wait...</div>
+                    <div id="message" style="display:none; margin:40px; font-size:20px"><strong>Thank you</strong> for confirming update <span id="draftNodeId"></span> to the site. Please close all browser windows and reload the site to view your updated content.</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

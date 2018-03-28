@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CVS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <!--<script type="text/javascript" src="_lib/gitana/gitana.min.js"></script>--> 
+    <link  href="//code.cloudcms.com/alpaca/1.5.22/bootstrap/alpaca.min.css" rel="stylesheet" />    
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <link rel="stylesheet" href="/css/dateTimePicker.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">-->
+    <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        .alpaca-container-item
+        {
+            background-color: #eeeeee;
+        }
+        
+        .alpaca-field-object
+        {
+            border: 2px solid black;
+        }
+        
+        .alpaca-container-label
+        {
+            background-color: #dddddd;
+        }
+        
+        .alpaca-field-array
+        {
+            background-color: #828282;
+        }
+        
+        #logout
+        {
+            color: Blue;
+        }
+         #cpy_element {
+            display:none;
+        }
+        textarea#lnk,textarea#lnk1 {
+            width: 30em;
+            height: 7em;
+        }
+        /*alpaca image style*/
+        .alpaca-image-display.alpaca-control img {
+            /* height: 260px; */
+            width: 420px;
+            }
+        table#imgtbl .alpaca-image-display.alpaca-control img {
+            height: 70px;
+            width: 100px;
+            background:rgba(225, 225, 225, 0.44);
+        }
+        p#logout {
+            float: right;
+        }
+       option.relateHighlight {
+    background: #ccc;
+}
+tr.alpaca-container-item td.alpaca-container-item{
+    background-color:#FFF;
+}
+
+header #site {
+    float: left;
+    margin: 0px 12px 0 0;
+    border-left: solid 1px #ccc;
+    padding: 4px 0 0 28px;
+    width: 180px;
+}
+header #company {
+    float: left;
+    margin: 8px;
+    width: 180px;
+}
+header #company img,header #site img {
+    width: 90%;
+}
+   
+ 
+    </style>
+ 
+    <!-- clickjacking script-->
+    <style>
+       .hero .tileboxbt .tilebox {
+    min-height: 140px;
+    padding: 18px 0;
+    position: relative;
+}
+.hero .tileboxbt .tilebox, .hero .align-bottom.tileboxbt .tilebox {
+    display: table;
+    width: 100%;
+}
+.hero .tileboxbt .tilebox {
+    padding: 18px 0;
+    height: 140px;
+    min-height: 140px;
+}
+.hero .tileboxbt {
+    margin: 0 6px;
+    position: relative;
+    background-size: cover;
+    background-position: 50% top;
+    background-repeat: no-repeat;
+    border: solid 1px #ddd;
+}
+.hero .align-bottom.tileboxbt .tilebox h2 {
+    display: table-cell;
+    vertical-align: bottom;
+}.hero .tileboxbt .tilebox h2 {
+    font-size: 1.3em;
+    font-weight: normal,;
+}
+    </style>
+    <script>
+        if (self == top) {
+            console.log("Clickjacking test passed");
+            document.documentElement.style.display = 'block';
+        } else {
+            console.log("Clickjacking test failed");
+            top.location = self.location;
+        }
+
+    </script>
+      <script src="/js/jquery-1.12.4.min.js"></script>
+</head>
+<body onload='checkCred();'>
+    <div class="container" style="background-color: #FFF; height: 91px">
+        
+            <header>
+                <div id="company" title="CVSHealth"><a href="index.html"><img src="img/logo-cvsh.png" class="img-res"></a></div>
+                <div id="site"><img src="img/logo-mbs.png"></div>
+            </header>
+        
+    </div>
+    <p id="logout" onclick="logout()" style="cursor: pointer">
+        logout</p>
+    <div id="loginContainer">
+    </div>
+
+    <div id='ur'><p></p></div>
+    <div class="container landingpage">
+        <!-- tabbed area -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Tile</a></li>       
+           <li><a data-toggle="tab" href="#menu2">Manage File Upload</a></li>  
+        </ul>
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <br/> 
+                
+                  <!--<div id="myDropdown1">
+                </div>-->
+                <div id="tileDisp">
+                    
+                </div>
+
+                <div id="tileDisp1" style="display: none">
+                   
+                </div>
+
+                <div id="myform" style="display: block">
+                </div>
+               
+            </div>
+            <div id="menu2" class="tab-pane fade">
+
+                <div>
+                    <br />
+                    <div class="uploadIm">
+                         <label for="myFileUpload5">
+                        What would you like to view?? 
+                        <a href="#" onclick="getAttachments('image')">Images</a> OR 
+
+                        <a href="#" onclick="getAttachments('document')">Documents</a>
+
+                        <table id="imgtbl"  style="display: none;"></table>
+                        <table id="imgdoc"  style="display: none;"></table> 
+                        <div class="images"></div>
+                        <div class="docs"></div>
+                        </label>
+                    </div>
+                    <br />
+                 <textarea id="holdtext" style="display: none"></textarea>
+            
+                    
+                </div>
+
+
+
+                <!-- upload content goes here -->
+                <form action="" method="post" enctype="multipart/form-data" name="frmeditSubmitForm5"
+                id="frmeditSubmitForm5" style="display: none;">
+                <div>
+                    <br />
+                    <label for="myFileUpload5">
+                        You may use this form to upload images , pdf (Adobe Acrobat) , xls/xlsx (Microsoft Excel) , ppt/pptx (Microsoft Powerpoint)
+                        resources to your document library. Select the file by clicking on the 'Choose File'
+                        Button. Give the file a user friendly name. It should be lowercase with no spaces.
+                        Then click 'Submit' to upload your file to the library.
+                    </label>
+                    <br />
+                    <input type="file" id="myFileUpload5" accept="application/pdf,application/vnd.ms-excel"
+                        name="myFileUpload5">
+                    <br />
+                    <label>
+                        Give a name to your file (lowercase, no spaces ex: <span style="background-color: Yellow">
+                            my_new_file</span>).
+                        <br />
+                        <input type="text" name="uploadFilename5" id="uploadFilenameEdit5">
+                        
+                        <br>
+                    </label>
+                     <p id="p1" style="display:none">
+                             https://59fac0b3-cfeb-4ac1-b529-86c5899ca688-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=<span id="Span1"></span> 
+                         </p>
+                </div>
+                <div>
+                    <input id="mySubmitButton" name="mySubmit" type="submit" value="Submit">
+                     <div id="cpy_element">
+                        <br/>
+                        
+                    <p><strong> To create a link to the file in the page editor click on copy and paste this customized link
+                    into the link field:</strong></p> 
+                        <textarea id="lnk" readonly></textarea><br/>
+                    <input type="button" onclick="copyToClipboard('#p1')" value="Copy Link" id="cpy">
+                    </div>
+                      <div><br/>
+                         <p><strong> To create a link to the file in the page editor click on copy and paste this customized link
+                        into the link field:</strong></p>
+                      <textarea id="lnk1" readonly></textarea><br/>
+
+                    </div>
+                    
+                </div>
+                     <input type="hidden" name="_dontcare">
+                </form>
+                <script>
+                    $("#frmeditSubmitForm5").submit(function (event) {
+                        alert('Resource Uploaded');
+                        event.preventDefault(); // Prevent the form from submitting via the browser.
+                        submitForm();
+                    });
+
+                </script>
+                <!-- upload content ends here -->
+            </div>
+             
+                <!-- upload content ends here -->
+            </div>
+        <div id="dialog-modal1" title="Image replace dialog">
+            <div class="gallery">
+                <div class="images">
+                   
+                </div>
+                <div class="thumbs">
+                  
+                </div>
+              </div>
+         </div> 
+          <div id="dialog-modal2" title="Preview Tile">
+            <div>
+                <div id='learn1' class='hero'></div>
+                 <div id='decide1' class='hero'></div>
+                  <div id='enroll1' class='hero'></div>
+              </div>
+         </div>  
+          <input type="hidden" name="_dontcare">
+    </div>
+    <br>
+
+
+     <div class="push"></div>
+    <div class="container footer">
+        <p>&copy; 2018 Alight Solutions</p>
+    </div>
+ 
+  
+
+  
+    <script src="/js/bootstrap3.3.js"></script>
+    <script src="/js/handlebars-v4.0.5.js"> </script>
+    <script src="js/jquery-ui.js" type="text/javascript"></script>
+    <script src="/js/gitana.1.0.241.min.js"></script>
+    <!-- <script src="_lib/gitana/gitana.min.js" type="text/javascript"></script> -->
+    <script src="/js/alpaca.js"></script>
+     
+    
+    <script src="ckeditorFull/ckeditor.js" type="text/javascript"></script>
+    <script src="js/moment.js" type="text/javascript"></script>
+    <script src="js/bootstrap-datetime.js" type="text/javascript"></script>
+
+    <script src="js/alpaca2.js"></script>
+
+    <script src="js/Class.create.js" type="text/javascript"></script>
+    <script src="js/jquery-encoder-0.1.0.js" type="text/javascript"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.4/hammer.min.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/main.js"></script>
+
+    
+</body>
+</html>
+
