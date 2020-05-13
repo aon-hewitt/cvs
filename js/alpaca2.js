@@ -20,7 +20,9 @@ var now = new Date();
 var projectId = '7ed2d5fbd98cabe9eb61';
 
 //var applicationId = '6af9084e0eec8c4756c6'; // to be provided for cvs app
-var applicationId = '6d5aa7e34b8be727b8d5'; 
+ var applicationId = '6d5aa7e34b8be727b8d5';   // prod 03-12
+//var applicationId = '27862155492e77d5eb4d';
+
 var workflowId = 'cvsWorkflow';
 //var emailProviderId = '0ebca2d0dcc9590dc9ae'; // from cvs app
 var emailProviderId = '6b1b6a8e002d85bb28bd';
@@ -28,16 +30,13 @@ var globaLanguage = 'English';
 var draftNodeId;
 var config;
 
-var en_actualJson=[
- {"id":"1","title": "Medical and Prescription (Most U.S. Locations)"}, {"id":"2","title": "Medical and Prescription (California)"}, {"id":"3","title": "Medical and Prescription (Dallas)"}, {"id":"4","title": "Medical and Prescription (Phoenix)"}, {"id":"5","title": "Medical and Prescription (Chicago)"}, {"id":"6","title": "Medical and Prescription (Georgia)"},{"id":"7","title": "Medical and Prescription (Houston)"},{"id":"8","title": "Medical and Prescription (MD/VA/D.C.)"},{"id":"9","title": "Medical and Prescription (San Antonio)"}]
-var en_relatedJson=["Medical and Prescription (Most U.S. Locations)","Medical and Prescription (California)","Medical and Prescription (Dallas)","Medical and Prescription (Phoenix)", {"id":"6","title": "Medical and Prescription (Georgia)"},{"id":"7","title": "Medical and Prescription (Houston)"},{"id":"8","title": "Medical and Prescription (MD/VA/D.C.)"},{"id":"9","title": "Medical and Prescription (San Antonio)"}]
+var en_actualJson=[{"id":"1","title": "Medical and Prescription (Most U.S. Locations)"}, {"id":"2","title": "Medical and Prescription (Hawaii)"}, {"id":"3","title": "Medical and Prescription (Puerto Rico)"}]
+var en_relatedJson=["Medical and Prescription (Most U.S. Locations)","Medical and Prescription (Hawaii)","Medical and Prescription (Puerto Rico)"]
 
 
-var sp_actualJson=[
- {"id":"1","title": "Planes médicos y de medicamentos por receta  (La mayoría de las localidades de Estados)"}, {"id":"2","title": "Planes médicos y de medicamentos por receta  (California)"}, {"id":"3","title": "Planes médicos y de medicamentos por receta (Dallas)"}, {"id":"4","title": "Planes médicos y de medicamentos por receta (California)"},{"id":"5","title": "Planes médicos y de medicamentos por receta (Chicago)"},{"id":"6","title": "Planes médicos y de medicamentos por receta (Geogia)"},{"id":"7","title": "Planes médicos y de medicamentos por receta (San Antonio)"},{"id":"8","title": "Planes médicos y de medicamentos por receta (Houston)"},{"id":"9","title": "Planes médicos y de medicamentos por receta (MD/VA/D.C.)"}]
-var sp_relatedJson=["Planes médicos y de medicamentos por receta  (La mayoría de las localidades de Estados))","Planes médicos y de medicamentos por receta  (California)","Planes médicos y de medicamentos por receta (Dallas)","Planes médicos y de medicamentos por receta (Phoenix)",{"id":"5","title": "Planes médicos y de medicamentos por receta (Chicago)"},{"id":"6","title": "Planes médicos y de medicamentos por receta (Geogia)"},{"id":"7","title": "Planes médicos y de medicamentos por receta (San Antonio)"},{"id":"8","title": "Planes médicos y de medicamentos por receta (Houston)"},{"id":"9","title": "Planes médicos y de medicamentos por receta (MD/VA/D.C.)"}]
+var sp_actualJson=[{"id":"1","title": "Planes médicos y de medicamentos por receta (La mayoría de las localidades de Estados)"},  {"id":"2","title": "Planes médicos y de medicamentos por receta (Hawaii)"}, {"id":"3","title": "Planes médicos y de medicamentos por receta (Puerto Rico)"}]
 
-
+var sp_relatedJson=["Planes médicos y de medicamentos por receta (La mayoría de las localidades de Estados))","Planes médicos y de medicamentos por receta (Hawaii)","Planes médicos y de medicamentos por receta (Puerto Rico)"]
 
 function checkCred(){
 
@@ -64,7 +63,21 @@ function getConfig(){
     username = $("#txtUsername").val();
     password = $("#txtPassword").val();
 
- config = {
+    /*local testing
+    config = {
+
+        "clientKey": "71a224e5-0365-4313-8ac7-dd03f82ce883",
+        "clientSecret":  "d6Pjc0+4gtioi10c5BoBZJgmZWX3nt1Htw1knPnRhF1VdTwO2UfPqyRX4fgHglRwSTovqBm1qtfnM0s/nxc7Z69CuhD1EbbbloRUCLqFUiQ=",
+          "username": username,
+        "password": password,
+        //"Username":   "3193b15b-00d8-4226-a5f3-4a8db65da4b2",
+       // "Password":   "65I7K9NLWYs3Ma+g/uEm5KRmHXGzhA7TmysVxYeSmQX9y0Zd7xWPc17viw3o5r7TZ/N2DYsC+qHYrm2VT59rNAeXv861vYW/ySjaiVWoXqQ=",
+        "baseURL": "https://api.cloudcms.com",
+        "application": "27862155492e77d5eb4d" 
+    };*/
+    //PROD 03-12
+
+    config = {
         "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
         "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
         "username": username,
@@ -107,6 +120,19 @@ function getPage(callback) {
    
     username = $("#txtUsername").val();
     password = $("#txtPassword").val();
+    /*  config = {
+
+        "clientKey": "71a224e5-0365-4313-8ac7-dd03f82ce883",
+        "clientSecret":  "d6Pjc0+4gtioi10c5BoBZJgmZWX3nt1Htw1knPnRhF1VdTwO2UfPqyRX4fgHglRwSTovqBm1qtfnM0s/nxc7Z69CuhD1EbbbloRUCLqFUiQ=",
+          "username": username,
+        "password": password,
+        //"Username":   "3193b15b-00d8-4226-a5f3-4a8db65da4b2",
+        //"Password":   "65I7K9NLWYs3Ma+g/uEm5KRmHXGzhA7TmysVxYeSmQX9y0Zd7xWPc17viw3o5r7TZ/N2DYsC+qHYrm2VT59rNAeXv861vYW/ySjaiVWoXqQ=",
+        "baseURL": "https://api.cloudcms.com",
+        "application": "27862155492e77d5eb4d" 
+    };*/
+
+    // prod 03-12
     config   = {
         "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
         "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
@@ -174,7 +200,19 @@ function getPage(callback) {
 function getImages(val){
     username = $("#txtUsername").val();
     password = $("#txtPassword").val();
+     /* config = {
 
+        "clientKey": "71a224e5-0365-4313-8ac7-dd03f82ce883",
+        "clientSecret":  "d6Pjc0+4gtioi10c5BoBZJgmZWX3nt1Htw1knPnRhF1VdTwO2UfPqyRX4fgHglRwSTovqBm1qtfnM0s/nxc7Z69CuhD1EbbbloRUCLqFUiQ=",
+         "username": username,
+        "password": password,
+       // "Username":   "3193b15b-00d8-4226-a5f3-4a8db65da4b2",
+       // "Password":   "65I7K9NLWYs3Ma+g/uEm5KRmHXGzhA7TmysVxYeSmQX9y0Zd7xWPc17viw3o5r7TZ/N2DYsC+qHYrm2VT59rNAeXv861vYW/ySjaiVWoXqQ=",
+        "baseURL": "https://api.cloudcms.com",
+        "application": "27862155492e77d5eb4d" 
+    };*/
+
+    // PROD 03-12
    config = {
         "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
         "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
@@ -271,7 +309,18 @@ function getImages(val){
 function getAttachments(attach){
      username = $("#txtUsername").val();
     password = $("#txtPassword").val();
+     /* config = {
 
+        "clientKey": "71a224e5-0365-4313-8ac7-dd03f82ce883",
+        "clientSecret":  "d6Pjc0+4gtioi10c5BoBZJgmZWX3nt1Htw1knPnRhF1VdTwO2UfPqyRX4fgHglRwSTovqBm1qtfnM0s/nxc7Z69CuhD1EbbbloRUCLqFUiQ=",
+          "username": username,
+        "password": password,
+       // "Username":   "3193b15b-00d8-4226-a5f3-4a8db65da4b2",
+        //"Password":   "65I7K9NLWYs3Ma+g/uEm5KRmHXGzhA7TmysVxYeSmQX9y0Zd7xWPc17viw3o5r7TZ/N2DYsC+qHYrm2VT59rNAeXv861vYW/ySjaiVWoXqQ=",
+        "baseURL": "https://api.cloudcms.com",
+        "application": "27862155492e77d5eb4d" 
+    };*/
+    //PROD 03-12
   config = {
         "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
         "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
@@ -709,7 +758,7 @@ function getPageDetails(nPageData){
                     "population": {
                          "type": "string",
                         "title": "Population",
-                        "enum": ["Most US Locations", "California","Dallas", "Hawaii","Phoenix","Puerto Rico","Chicago","Georgia","Houston","San Antonio","MD/VA/D.C."],
+                        "enum": ["Most US Locations", "Hawaii","Puerto Rico"],
                         "required":true
                     },
                     "language": {
@@ -870,7 +919,7 @@ function getPageDetails(nPageData){
                     },
                     "population": {
                         "type":"checkbox",
-                        "optionLabels": ["Most US Locations", "California","Dallas", "Hawaii","Phoenix","Puerto Rico","Chicago","Georgia","Houston","San Antonio","MD/VA/D.C."],                        
+                        "optionLabels": ["Most US Locations", "Hawaii","Puerto Rico"],                        
                         "events":{
                                "change": function(val) {                                  
                                     var language_sel = $('input:radio[name=language]:checked').val();
@@ -910,13 +959,7 @@ function getPageDetails(nPageData){
                                             var loc_data = location_selected.split(',');
                                            
                                             for(var j=0; j < loc_data.length ; j++) {
-                                                if(loc_data[j].indexOf('Cali') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='cali';
-                                                    }else{
-                                                        loc_str +=',cali';
-                                                    }
-                                                }
+                                                
                                              if(loc_data[j].indexOf('Hawa') >=0 ){
                                                     if(loc_str == ''){
                                                         loc_str ='hawaii';
@@ -924,20 +967,7 @@ function getPageDetails(nPageData){
                                                         loc_str +=',hawaii';
                                                     }
                                                 }
-                                                if(loc_data[j].indexOf('Dall') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='dal';
-                                                    }else{
-                                                        loc_str +=',dal';
-                                                    }
-                                                }
-                                                  if(loc_data[j].indexOf('Pho') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='phx';
-                                                    }else{
-                                                        loc_str +=',phx';
-                                                    }
-                                                } if(loc_data[j].indexOf('Puert') >=0 ){
+                                               if(loc_data[j].indexOf('Puert') >=0 ){
                                                     if(loc_str == ''){
                                                         loc_str ='rico';
                                                     }else{
@@ -950,70 +980,19 @@ function getPageDetails(nPageData){
                                                     }else{
                                                         loc_str +=',most';
                                                     }
-                                                }  
-                                                if(loc_data[j].indexOf('Chic') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='chg';
-                                                    }else{
-                                                        loc_str +=',chg';
-                                                    }
-                                                } 
-                                                if(loc_data[j].indexOf('Geor') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='grg';
-                                                    }else{
-                                                        loc_str +=',grg';
-                                                    }
-                                                }   
-                                                if(loc_data[j].indexOf('Hous') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='hou';
-                                                    }else{
-                                                        loc_str +=',hou';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('San An') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='ant';
-                                                    }else{
-                                                        loc_str +=',ant';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('MD/VA') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='mvd';
-                                                    }else{
-                                                        loc_str +=',mvd';
-                                                    }
-                                                }  
+                                                }                                                
 
                                             }
                                             var location_data =loc_str.split(',');
                                         }else{
                                             var location_data = new Array();
-                                            if(location_selected.indexOf('Cali') >=0 ){ 
-                                                loc_str ='cali'; 
-                                            } if(location_selected.indexOf('Dal') >=0 ){ 
-                                                loc_str ='dal';                                                 
-                                            } if(location_selected.indexOf('Pho') >=0 ){
-                                                    loc_str ='phx';
-                                            } if(location_selected.indexOf('Most') >=0 ){
+                                            if(location_selected.indexOf('Most') >=0 ){
                                                 loc_str ='most';
                                             } if(location_selected.indexOf('Hawa') >=0 ){                                              
                                                 loc_str ='hawaii';
                                             } if(location_selected.indexOf('Puer') >=0 ){                                              
                                                 loc_str ='rico';
-                                            }if(location_selected.indexOf('Chic') >=0 ){                                              
-                                                loc_str ='chg';
-                                            }if(location_selected.indexOf('Geor') >=0 ){                                              
-                                                loc_str ='grg';
-                                            }if(location_selected.indexOf('Hous') >=0 ){                                              
-                                                loc_str ='hou';
-                                            }if(location_selected.indexOf('San An') >=0 ){                                              
-                                                loc_str ='ant';
-                                            }if(location_selected.indexOf('MD/VA') >=0 ){                                              
-                                                loc_str ='mvd';
-                                            }
+                                            } 
                                             location_data[0]=loc_str; 
                                         } 
                                         var hr='';
@@ -1086,39 +1065,13 @@ function getPageDetails(nPageData){
                                                 }
                                                 else if(ourData[x].filename.indexOf('-h-') >=0 ){
                                                      title = ourData[x].title + " (Hawaii)";  
-                                                }
-                                                else if(ourData[x].filename.indexOf('-c-') >=0 ){
-                                                     title = ourData[x].title + " (California)";                                                    
-                                                 
-                                                }
-                                                else if(ourData[x].filename.indexOf('-d-') >=0 ){
-                                                     title = ourData[x].title + " (Dallas)";                                                    
-                                                 
-                                                }
-                                                else if(ourData[x].filename.indexOf('-p-') >=0 ){
-                                                     title = ourData[x].title + " (Phoenix)";                                                    
-                                                 
-                                                }
+                                                } 
                                                 else if(ourData[x].filename.indexOf('-r-') >=0 ){
                                                      title = ourData[x].title + " (Puerto Rico)";                                                                                                          
-                                                } 
-                                                else if(ourData[x].filename.indexOf('-mvd-') >=0 ){
-                                                     title = ourData[x].title + " (MD/VA/D.C.)";                                                                                                          
-                                                }  
-                                                else if(ourData[x].filename.indexOf('-chg-') >=0 ){
-                                                     title = ourData[x].title + " (Chicago)";                                                                                                          
-                                                }  
-                                                else if(ourData[x].filename.indexOf('-grg-') >=0 ){
-                                                     title = ourData[x].title + " (Georgia)";                                                                                                          
-                                                } 
-                                                else if(ourData[x].filename.indexOf('-ant-') >=0 ){
-                                                     title = ourData[x].title + " (San Antonio)";                                                                                                          
-                                                } 
-                                                else if(ourData[x].filename.indexOf('-hou-') >=0 ){
-                                                     title = ourData[x].title + " (Houston)";                                                                                                          
-                                                }  else{ 
+                                                }else{ 
                                                     title = ourData[x].title;
-                                                }
+                                                    } 
+                                                
 
                                             }else{
                                                   title = ourData[x].title;                                                                                                            
@@ -1173,13 +1126,7 @@ function getPageDetails(nPageData){
                                             var loc_data = location_selected.split(',');
                                            
                                             for(var j=0; j < loc_data.length ; j++) {
-                                                if(loc_data[j].indexOf('Cali') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='cali';
-                                                    }else{
-                                                        loc_str +=',cali';
-                                                    }
-                                                }
+                                                
                                              if(loc_data[j].indexOf('Hawa') >=0 ){
                                                     if(loc_str == ''){
                                                         loc_str ='hawaii';
@@ -1187,20 +1134,7 @@ function getPageDetails(nPageData){
                                                         loc_str +=',hawaii';
                                                     }
                                                 }
-                                                if(loc_data[j].indexOf('Dall') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='dal';
-                                                    }else{
-                                                        loc_str +=',dal';
-                                                    }
-                                                }
-                                                  if(loc_data[j].indexOf('Pho') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='phx';
-                                                    }else{
-                                                        loc_str +=',phx';
-                                                    }
-                                                } if(loc_data[j].indexOf('Puert') >=0 ){
+                                                if(loc_data[j].indexOf('Puert') >=0 ){
                                                     if(loc_str == ''){
                                                         loc_str ='rico';
                                                     }else{
@@ -1213,75 +1147,19 @@ function getPageDetails(nPageData){
                                                     }else{
                                                         loc_str +=',most';
                                                     }
-                                                }  
-                                                 if(loc_data[j].indexOf('Chic') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='chg';
-                                                    }else{
-                                                        loc_str +=',chg';
-                                                    }
-                                                } 
-                                                if(loc_data[j].indexOf('Hous') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='hou';
-                                                    }else{
-                                                        loc_str +=',hou';
-                                                    }
-                                                } 
-                                                if(loc_data[j].indexOf('Geor') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='grg';
-                                                    }else{
-                                                        loc_str +=',grg';
-                                                    }
-                                                } 
-                                                if(loc_data[j].indexOf('San An') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='ant';
-                                                    }else{
-                                                        loc_str +=',ant';
-                                                    }
-                                                } 
-                                                if(loc_data[j].indexOf('MD/VA') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='mvd';
-                                                    }else{
-                                                        loc_str +=',mvd';
-                                                    }
-                                                } 
+                                                }                                                  
 
                                             }
                                             var location_data =loc_str.split(',');
                                         }else{
                                             var location_data = new Array();
-                                            if(location_selected.indexOf('Cali') >=0 ){ 
-                                                loc_str ='cali'; 
-                                            } if(location_selected.indexOf('Dal') >=0 ){ 
-                                                loc_str ='dal';                                                 
-                                            } if(location_selected.indexOf('Pho') >=0 ){
-                                                    loc_str ='phx';
-                                            } if(location_selected.indexOf('Most') >=0 ){
+                                            if(location_selected.indexOf('Most') >=0 ){
                                                 loc_str ='most';
                                             } if(location_selected.indexOf('Hawa') >=0 ){                                              
                                                 loc_str ='hawaii';
                                             } if(location_selected.indexOf('Puer') >=0 ){                                              
                                                 loc_str ='rico';
-                                            }if(location_selected.indexOf('Chic') >=0 ){                                              
-                                                loc_str ='chg';
-                                            }
-                                            if(location_selected.indexOf('Geor') >=0 ){                                              
-                                                loc_str ='grg';
-                                            }
-                                            if(location_selected.indexOf('Hous') >=0 ){                                              
-                                                loc_str ='hou';
-                                            }
-                                            if(location_selected.indexOf('San An') >=0 ){                                              
-                                                loc_str ='ant';
-                                            }
-                                            if(location_selected.indexOf('MD/VA') >=0 ){                                              
-                                                loc_str ='mvd';
-                                            }
-
+                                            } 
                                            location_data[0]= loc_str;
                                         }
                                         var hr='';
@@ -1353,36 +1231,11 @@ function getPageDetails(nPageData){
                                                     else if(ourData[x].filename.indexOf('-h-') >=0 ){
                                                          title = ourData[x].title + " (Hawaii)";  
                                                     }
-                                                    else if(ourData[x].filename.indexOf('-c-') >=0 ){
-                                                         title = ourData[x].title + " (California)";                                                    
-                                                     
-                                                    }
-                                                    else if(ourData[x].filename.indexOf('-d-') >=0 ){
-                                                         title = ourData[x].title + " (Dallas)";                                                    
-                                                     
-                                                    }
-                                                    else if(ourData[x].filename.indexOf('-p-') >=0 ){
-                                                         title = ourData[x].title + " (Phoenix)";                                                    
-                                                     
-                                                    }
+                                                    
                                                     else if(ourData[x].filename.indexOf('-r-') >=0 ){
                                                          title = ourData[x].title + " (Puerto Rico)";                                                                                                          
                                                     }  
-                                                    else if(ourData[x].filename.indexOf('-chg-') >=0 ){
-                                                         title = ourData[x].title + " (Chicago)";                                                                                                          
-                                                    } 
-                                                    else if(ourData[x].filename.indexOf('-ant-') >=0 ){
-                                                         title = ourData[x].title + " (San Antonio)";                                                                                                          
-                                                    }  
-                                                    else if(ourData[x].filename.indexOf('-grg-') >=0 ){
-                                                         title = ourData[x].title + " (Georgia)";                                                                                                          
-                                                    }  
-                                                    else if(ourData[x].filename.indexOf('-hou-') >=0 ){
-                                                         title = ourData[x].title + " (Houston)";                                                                                                          
-                                                    } 
-                                                    else if(ourData[x].filename.indexOf('-mvd-') >=0 ){
-                                                         title = ourData[x].title + " (MD/VA/D.C.)";                                                                                                          
-                                                    } else{ 
+                                                    else{ 
                                                     title = ourData[x].title;
                                                     }
                                                 }else{
@@ -1451,34 +1304,14 @@ function getPageDetails(nPageData){
                                             var loc_data = location_selected.split(',');
                                            
                                             for(var j=0; j < loc_data.length ; j++) {
-                                                if(loc_data[j].indexOf('Cali') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='cali';
-                                                    }else{
-                                                        loc_str +=',cali';
-                                                    }
-                                                }
+                                                 
                                              if(loc_data[j].indexOf('Hawa') >=0 ){
                                                     if(loc_str == ''){
                                                         loc_str ='hawaii';
                                                     }else{
                                                         loc_str +=',hawaii';
                                                     }
-                                                }
-                                                if(loc_data[j].indexOf('Dall') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='dal';
-                                                    }else{
-                                                        loc_str +=',dal';
-                                                    }
-                                                }
-                                                  if(loc_data[j].indexOf('Pho') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='phx';
-                                                    }else{
-                                                        loc_str +=',phx';
-                                                    }
-                                                } if(loc_data[j].indexOf('Puert') >=0 ){
+                                                }if(loc_data[j].indexOf('Puert') >=0 ){
                                                     if(loc_str == ''){
                                                         loc_str ='rico';
                                                     }else{
@@ -1492,74 +1325,18 @@ function getPageDetails(nPageData){
                                                         loc_str +=',most';
                                                     }
                                                 }  
-                                                if(loc_data[j].indexOf('San An') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='ant';
-                                                    }else{
-                                                        loc_str +=',ant';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('Chic') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='chg';
-                                                    }else{
-                                                        loc_str +=',chg';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('Georg') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='grg';
-                                                    }else{
-                                                        loc_str +=',grg';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('Hous') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='hou';
-                                                    }else{
-                                                        loc_str +=',hou';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('MD/VA') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='mvd';
-                                                    }else{
-                                                        loc_str +=',mvd';
-                                                    }
-                                                }  
-
                                             }
                                             var location_data =loc_str.split(',');
                                         }else{
                                             var location_data = new Array();
-                                            if(location_selected.indexOf('Cali') >=0 ){ 
-                                                loc_str ='cali'; 
-                                            } if(location_selected.indexOf('Dal') >=0 ){ 
-                                                loc_str ='dal';                                                 
-                                            } if(location_selected.indexOf('Pho') >=0 ){
-                                                    loc_str ='phx';
-                                            } if(location_selected.indexOf('Most') >=0 ){
+                                            if(location_selected.indexOf('Most') >=0 ){
                                                 loc_str ='most';
                                             } if(location_selected.indexOf('Hawa') >=0 ){                                              
                                                 loc_str ='hawaii';
                                             } if(location_selected.indexOf('Puer') >=0 ){                                              
                                                 loc_str ='rico';
                                             }
-                                            if(location_selected.indexOf('Chic') >=0 ){                                              
-                                                loc_str ='chg';
-                                            }
-                                            if(location_selected.indexOf('Geor') >=0 ){                                              
-                                                loc_str ='grg';
-                                            }
-                                            if(location_selected.indexOf('San An') >=0 ){                                              
-                                                loc_str ='ant';
-                                            }
-                                            if(location_selected.indexOf('MD/VA') >=0 ){                                              
-                                                loc_str ='mvd';
-                                            }
-                                            if(location_selected.indexOf('Hous') >=0 ){                                              
-                                                loc_str ='hou';
-                                            }
+                                           
 
                                             location_data[0]= loc_str;
                                         } 
@@ -1633,36 +1410,12 @@ function getPageDetails(nPageData){
                                                 else if(ourData[x].filename.indexOf('-h-') >=0 ){
                                                      title = ourData[x].title + " (Hawaii)";  
                                                 }
-                                                else if(ourData[x].filename.indexOf('-c-') >=0 ){
-                                                     title = ourData[x].title + " (California)";                                                    
-                                                 
-                                                }
-                                                else if(ourData[x].filename.indexOf('-d-') >=0 ){
-                                                     title = ourData[x].title + " (Dallas)";                                                    
-                                                 
-                                                }
-                                                else if(ourData[x].filename.indexOf('-p-') >=0 ){
-                                                     title = ourData[x].title + " (Phoenix)";                                                    
-                                                 
-                                                }
+                                                
+                                               
                                                 else if(ourData[x].filename.indexOf('-r-') >=0 ){
                                                      title = ourData[x].title + " (Puerto Rico)";                                                                                                          
                                                 } 
-                                                else if(ourData[x].filename.indexOf('-chg-') >=0 ){
-                                                     title = ourData[x].title + " (Chicago)";                                                                                                          
-                                                }  
-                                                else if(ourData[x].filename.indexOf('-grg-') >=0 ){
-                                                     title = ourData[x].title + " (Georgia)";                                                                                                          
-                                                } 
-                                                else if(ourData[x].filename.indexOf('-hou-') >=0 ){
-                                                     title = ourData[x].title + " (Houston)";                                                                                                          
-                                                } 
-                                                else if(ourData[x].filename.indexOf('-ant-') >=0 ){
-                                                     title = ourData[x].title + " (San Antonio)";                                                                                                          
-                                                } 
-                                                else if(ourData[x].filename.indexOf('-mvd-') >=0 ){
-                                                     title = ourData[x].title + " (MD/VA/D.C.)";                                                                                                          
-                                                }  else{ 
+                                                 else{ 
                                                     title = ourData[x].title;
                                                 }
                                             }else{
@@ -1761,12 +1514,13 @@ function getPageDetails(nPageData){
                                     
                                     var bgI = document.getElementsByName('bgImage');
                                     var cl = document.getElementsByName('color');
-
+                                         console.log(document.getElementsByName('color').selected);
                                     /*for(i=0;i<cl.length;i++){
                                         if(cl[i].checked)
                                       bgClass= cl[i].value;
                                     }*/
-                                    bgClass=cl['color'].value;
+                               //     bgClass=cl['color'].value;
+                                    bgClass = cl[0].options[cl[0].selectedIndex].value;
                                   
                                     var bg_class='';
                                    for (var color in bgcolor) {
@@ -1932,7 +1686,7 @@ function showFormPage() {
                     "population": {
                          "type": "string",
                         "title": "Population",
-                        "enum":["Most US Locations", "California","Dallas", "Hawaii","Phoenix","Puerto Rico","Chicago","Georgia","Houston","San Antonio","MD/VA/D.C."],
+                        "enum":["Most US Locations", "Hawaii","Puerto Rico"],
                         "required":true
                     },
                     "language": {
@@ -2122,7 +1876,7 @@ function showFormPage() {
                     },
                     "population": {
                         "type":"checkbox",
-                        "optionLabels": ["Most US Locations", "California","Dallas", "Hawaii","Phoenix","Puerto Rico","Chicago","Georgia","Houston","San Antonio","MD/VA/D.C."],
+                        "optionLabels": ["Most US Locations", "Hawaii","Puerto Rico"],
                         "events":{
                             "change": function(val) {                                  
                                     var language_sel = $('input:radio[name=language]:checked').val();
@@ -2162,13 +1916,7 @@ function showFormPage() {
                                             var loc_data = location_selected.split(',');
                                            console.log(loc_data);
                                             for(var j=0; j < loc_data.length ; j++) {
-                                                if(loc_data[j].indexOf('Cali') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='cali';
-                                                    }else{
-                                                        loc_str +=',cali';
-                                                    }
-                                                }
+                                                
                                              if(loc_data[j].indexOf('Hawa') >=0 ){
                                                     if(loc_str == ''){
                                                         loc_str ='hawaii';
@@ -2176,20 +1924,7 @@ function showFormPage() {
                                                         loc_str +=',hawaii';
                                                     }
                                                 }
-                                                if(loc_data[j].indexOf('Dall') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='dal';
-                                                    }else{
-                                                        loc_str +=',dal';
-                                                    }
-                                                }
-                                                  if(loc_data[j].indexOf('Pho') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='phx';
-                                                    }else{
-                                                        loc_str +=',phx';
-                                                    }
-                                                } if(loc_data[j].indexOf('Puert') >=0 ){
+                                                if(loc_data[j].indexOf('Puert') >=0 ){
                                                     if(loc_str == ''){
                                                         loc_str ='rico';
                                                     }else{
@@ -2203,74 +1938,19 @@ function showFormPage() {
                                                         loc_str +=',most';
                                                     }
                                                 } 
-                                                if(loc_data[j].indexOf('Chic') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='chg';
-                                                    }else{
-                                                        loc_str +=',chg';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('Geor') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='grg';
-                                                    }else{
-                                                        loc_str +=',grg';
-                                                    }
-                                                } 
-                                                if(loc_data[j].indexOf('Hous') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='hou';
-                                                    }else{
-                                                        loc_str +=',hou';
-                                                    }
-                                                } 
-                                                if(loc_data[j].indexOf('San An') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='ant';
-                                                    }else{
-                                                        loc_str +=',ant';
-                                                    }
-                                                } 
-                                                if(loc_data[j].indexOf('MD/VA') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='mvd';
-                                                    }else{
-                                                        loc_str +=',mvd';
-                                                    }
-                                                } 
-
+                                                
                                             }
                                             var location_data =loc_str.split(',');
                                         }else{
                                             var location_data = new Array();
-                                            if(location_selected.indexOf('Cali') >=0 ){ 
-                                                loc_str ='cali'; 
-                                            } if(location_selected.indexOf('Dal') >=0 ){ 
-                                                loc_str ='dal';                                                 
-                                            } if(location_selected.indexOf('Pho') >=0 ){
-                                                    loc_str ='phx';
-                                            } if(location_selected.indexOf('Most') >=0 ){
+                                            if(location_selected.indexOf('Most') >=0 ){
                                                 loc_str ='most';
                                             } if(location_selected.indexOf('Hawa') >=0 ){                                              
                                                 loc_str ='hawaii';
                                             } if(location_selected.indexOf('Puer') >=0 ){                                              
                                                 loc_str ='rico';
                                             }
-                                            if(location_selected.indexOf('Chic') >=0 ){                                              
-                                                loc_str ='chg';
-                                            }
-                                            if(location_selected.indexOf('Geor') >=0 ){                                              
-                                                loc_str ='grg';
-                                            }
-                                            if(location_selected.indexOf('Hous') >=0 ){                                              
-                                                loc_str ='hou';
-                                            }
-                                            if(location_selected.indexOf('San An') >=0 ){                                              
-                                                loc_str ='ant';
-                                            }
-                                            if(location_selected.indexOf('MD/VA') >=0 ){                                              
-                                                loc_str ='mvd';
-                                            }
+                                            
                                             location_data[0]=loc_str; 
                                         } 
                                         var hr='';
@@ -2344,36 +2024,11 @@ function showFormPage() {
                                                 else if(ourData[x].filename.indexOf('-h-') >=0 ){
                                                      title = ourData[x].title + " (Hawaii)";  
                                                 }
-                                                else if(ourData[x].filename.indexOf('-c-') >=0 ){
-                                                     title = ourData[x].title + " (California)";                                                    
-                                                 
-                                                }
-                                                else if(ourData[x].filename.indexOf('-d-') >=0 ){
-                                                     title = ourData[x].title + " (Dallas)";                                                    
-                                                 
-                                                }
-                                                else if(ourData[x].filename.indexOf('-p-') >=0 ){
-                                                     title = ourData[x].title + " (Phoenix)";                                                    
-                                                 
-                                                }
+                                                
                                                 else if(ourData[x].filename.indexOf('-r-') >=0 ){
                                                      title = ourData[x].title + " (Puerto Rico)";                                                                                                          
                                                 } 
-                                                else if(ourData[x].filename.indexOf('-chg-') >=0 ){
-                                                     title = ourData[x].title + " (Chicago)";                                                                                                          
-                                                }  
-                                                else if(ourData[x].filename.indexOf('-grg-') >=0 ){
-                                                     title = ourData[x].title + " (Georgia)";                                                                                                          
-                                                }  
-                                                else if(ourData[x].filename.indexOf('-ant-') >=0 ){
-                                                     title = ourData[x].title + " (San Antonio)";                                                                                                          
-                                                }  
-                                                else if(ourData[x].filename.indexOf('-hou-') >=0 ){
-                                                     title = ourData[x].title + " (Houston)";                                                                                                          
-                                                } 
-                                                else if(ourData[x].filename.indexOf('-mvd-') >=0 ){
-                                                     title = ourData[x].title + " (MD/VA/D.C.)";                                                                                                          
-                                                }  else{ 
+                                                 else{ 
                                                     title = ourData[x].title;
                                                 }
                                             }else{
@@ -2391,13 +2046,7 @@ function showFormPage() {
                                                         var loc_data = nPage[i]['population'].split(',');
                                            
                                                         for(var j=0; j < loc_data.length ; j++) {
-                                                            if(loc_data[j].indexOf('Cali') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='cali';
-                                                                }else{
-                                                                    nloc_str +=',cali';
-                                                                }
-                                                            }
+                                                             
                                                             if(loc_data[j].indexOf('Hawa') >=0 ){
                                                                     if(nloc_str == ''){
                                                                         nloc_str ='hawaii';
@@ -2405,20 +2054,7 @@ function showFormPage() {
                                                                         nloc_str +=',hawaii';
                                                                     }
                                                             }
-                                                            if(loc_data[j].indexOf('Dall') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='dal';
-                                                                }else{
-                                                                    nloc_str +=',dal';
-                                                                }
-                                                            }
-                                                              if(loc_data[j].indexOf('Pho') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='phx';
-                                                                }else{
-                                                                    nloc_str +=',phx';
-                                                                }
-                                                            } if(loc_data[j].indexOf('Puert') >=0 ){
+                                                             if(loc_data[j].indexOf('Puert') >=0 ){
                                                                 if(nloc_str == ''){
                                                                     nloc_str ='rico';
                                                                 }else{
@@ -2432,75 +2068,21 @@ function showFormPage() {
                                                                     nloc_str +=',most';
                                                                 }
                                                             }  
-                                                            if(loc_data[j].indexOf('Chic') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='chg';
-                                                                }else{
-                                                                    nloc_str +=',chg';
-                                                                }
-                                                            }  
-                                                            if(loc_data[j].indexOf('Geor') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='grg';
-                                                                }else{
-                                                                    nloc_str +=',grg';
-                                                                }
-                                                            }  
-                                                            if(loc_data[j].indexOf('San An') >=0 ){
-                                                                if(nloc_str == 'ant'){
-                                                                    nloc_str ='';
-                                                                }else{
-                                                                    nloc_str +=',ant';
-                                                                }
-                                                            }  
-                                                            if(loc_data[j].indexOf('Hous') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='hou';
-                                                                }else{
-                                                                    nloc_str +=',hou';
-                                                                }
-                                                            }  
-                                                            if(loc_data[j].indexOf('MD/VA') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='mvd';
-                                                                }else{
-                                                                    nloc_str +=',mvd';
-                                                                }
-                                                            }  
+                                                            
                                                         }
                                                         var nlocation_data =nloc_str.split(','); 
                                                       
                                                     }else{
                                                         var nlocation_data = new Array();
                                                         loc_str='';
-                                                        if(nPage[i]['population'].indexOf('Cali') >=0 ){ 
-                                                            loc_str ='cali'; 
-                                                        } if(nPage[i]['population'].indexOf('Dal') >=0 ){ 
-                                                            loc_str ='dal';                                                 
-                                                        } if(nPage[i]['population'].indexOf('Pho') >=0 ){
-                                                                loc_str ='phx';
-                                                        } if(nPage[i]['population'].indexOf('Most') >=0 ){
+                                                        if(nPage[i]['population'].indexOf('Most') >=0 ){
                                                             loc_str ='most';
                                                         } if(nPage[i]['population'].indexOf('Hawa') >=0 ){                                              
                                                             loc_str ='hawaii';
                                                         } if(nPage[i]['population'].indexOf('Puer') >=0 ){                                              
                                                             loc_str ='rico';
                                                         }
-                                                        if(nPage[i]['population'].indexOf('Chic') >=0 ){                                              
-                                                            loc_str ='chg';
-                                                        }
-                                                        if(nPage[i]['population'].indexOf('Geor') >=0 ){                                              
-                                                            loc_str ='grg';
-                                                        }
-                                                        if(nPage[i]['population'].indexOf('Hous') >=0 ){                                              
-                                                            loc_str ='hou';
-                                                        }
-                                                        if(nPage[i]['population'].indexOf('San An') >=0 ){                                              
-                                                            loc_str ='ant';
-                                                        }
-                                                        if(nPage[i]['population'].indexOf('MD/VA') >=0 ){                                              
-                                                            loc_str ='mvd';
-                                                        }
+                                                         
                                                         nlocation_data[0]= loc_str ;
                                                     }
                                            
@@ -2640,34 +2222,15 @@ function showFormPage() {
                                             var loc_data = location_selected.split(',');
                                            
                                             for(var j=0; j < loc_data.length ; j++) {
-                                                if(loc_data[j].indexOf('Cali') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='cali';
-                                                    }else{
-                                                        loc_str +=',cali';
-                                                    }
-                                                }
-                                             if(loc_data[j].indexOf('Hawa') >=0 ){
+                                                
+                                                if(loc_data[j].indexOf('Hawa') >=0 ){
                                                     if(loc_str == ''){
                                                         loc_str ='hawaii';
                                                     }else{
                                                         loc_str +=',hawaii';
                                                     }
                                                 }
-                                                if(loc_data[j].indexOf('Dall') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='dal';
-                                                    }else{
-                                                        loc_str +=',dal';
-                                                    }
-                                                }
-                                                  if(loc_data[j].indexOf('Pho') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='phx';
-                                                    }else{
-                                                        loc_str +=',phx';
-                                                    }
-                                                } if(loc_data[j].indexOf('Puert') >=0 ){
+                                                if(loc_data[j].indexOf('Puert') >=0 ){
                                                     if(loc_str == ''){
                                                         loc_str ='rico';
                                                     }else{
@@ -2681,74 +2244,18 @@ function showFormPage() {
                                                         loc_str +=',most';
                                                     }
                                                 }  
-                                                 if(loc_data[j].indexOf('Chic') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='chg';
-                                                    }else{
-                                                        loc_str +=',chg';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('Geor') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='grg';
-                                                    }else{
-                                                        loc_str +=',grg';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('San An') >=0 ){
-                                                    if(loc_str == 'ant'){
-                                                        loc_str ='';
-                                                    }else{
-                                                        loc_str +=',ant';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('Hous') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='hou';
-                                                    }else{
-                                                        loc_str +=',hou';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('MD/VA') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='mvd';
-                                                    }else{
-                                                        loc_str +=',mvd';
-                                                    }
-                                                }  
-
                                             }
                                             var location_data =loc_str.split(',');
                                         }else{
                                             var location_data = new Array();
-                                            if(location_selected.indexOf('Cali') >=0 ){ 
-                                                loc_str ='cali'; 
-                                            } if(location_selected.indexOf('Dal') >=0 ){ 
-                                                loc_str ='dal';                                                 
-                                            } if(location_selected.indexOf('Pho') >=0 ){
-                                                    loc_str ='phx';
-                                            } if(location_selected.indexOf('Most') >=0 ){
+                                            if(location_selected.indexOf('Most') >=0 ){
                                                 loc_str ='most';
                                             } if(location_selected.indexOf('Hawa') >=0 ){                                              
                                                 loc_str ='hawaii';
                                             } if(location_selected.indexOf('Puer') >=0 ){                                              
                                                 loc_str ='rico';
                                             }
-                                            if(location_selected.indexOf('Chic') >=0 ){                                              
-                                                loc_str ='chg';
-                                            }
-                                            if(location_selected.indexOf('Geor') >=0 ){                                              
-                                                loc_str ='grg';
-                                            }
-                                           if(location_selected.indexOf('Hous') >=0 ){                                              
-                                                loc_str ='hou';
-                                            }
-                                            if(location_selected.indexOf('San An') >=0 ){                                              
-                                                loc_str ='ant';
-                                            }
-                                           if(location_selected.indexOf('MD/VA') >=0 ){                                              
-                                                loc_str ='mvd';
-                                            }
+                                           
                                            location_data[0]= loc_str;
                                         }
                                         var hr='';
@@ -2822,36 +2329,11 @@ function showFormPage() {
                                                 else if(ourData[x].filename.indexOf('-h-') >=0 ){
                                                      title = ourData[x].title + " (Hawaii)";  
                                                 }
-                                                else if(ourData[x].filename.indexOf('-c-') >=0 ){
-                                                     title = ourData[x].title + " (California)";                                                    
-                                                 
-                                                }
-                                                else if(ourData[x].filename.indexOf('-d-') >=0 ){
-                                                     title = ourData[x].title + " (Dallas)";                                                    
-                                                 
-                                                }
-                                                else if(ourData[x].filename.indexOf('-p-') >=0 ){
-                                                     title = ourData[x].title + " (Phoenix)";                                                    
-                                                 
-                                                }
+                                                
                                                 else if(ourData[x].filename.indexOf('-r-') >=0 ){
                                                      title = ourData[x].title + " (Puerto Rico)";                                                                                                          
                                                 }
-                                                else if(ourData[x].filename.indexOf('-chg-') >=0 ){
-                                                     title = ourData[x].title + " (Chicago)";                                                                                                          
-                                                }  
-                                                else if(ourData[x].filename.indexOf('-grg-') >=0 ){
-                                                     title = ourData[x].title + " (Georgia)";                                                                                                          
-                                                }
-                                                else if(ourData[x].filename.indexOf('-ant-') >=0 ){
-                                                     title = ourData[x].title + " (San Antonio)";                                                                                                          
-                                                } 
-                                                else if(ourData[x].filename.indexOf('-hou-') >=0 ){
-                                                     title = ourData[x].title + " (Houston)";                                                                                                          
-                                                }
-                                                else if(ourData[x].filename.indexOf('-mvd-') >=0 ){
-                                                     title = ourData[x].title + " (MD/VA/D.C.)";                                                                                                          
-                                                }  else{ 
+                                                else{ 
                                                     title = ourData[x].title;
                                                 }
                                             }else{
@@ -2870,13 +2352,7 @@ function showFormPage() {
                                                         var loc_data = nPage[i]['population'].split(',');
                                            
                                                         for(var j=0; j < loc_data.length ; j++) {
-                                                            if(loc_data[j].indexOf('Cali') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='cali';
-                                                                }else{
-                                                                    nloc_str +=',cali';
-                                                                }
-                                                            }
+                                                            
                                                             if(loc_data[j].indexOf('Hawa') >=0 ){
                                                                     if(nloc_str == ''){
                                                                         nloc_str ='hawaii';
@@ -2884,20 +2360,7 @@ function showFormPage() {
                                                                         nloc_str +=',hawaii';
                                                                     }
                                                             }
-                                                            if(loc_data[j].indexOf('Dall') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='dal';
-                                                                }else{
-                                                                    nloc_str +=',dal';
-                                                                }
-                                                            }
-                                                              if(loc_data[j].indexOf('Pho') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='phx';
-                                                                }else{
-                                                                    nloc_str +=',phx';
-                                                                }
-                                                            } if(loc_data[j].indexOf('Puert') >=0 ){
+                                                           if(loc_data[j].indexOf('Puert') >=0 ){
                                                                 if(nloc_str == ''){
                                                                     nloc_str ='rico';
                                                                 }else{
@@ -2911,76 +2374,21 @@ function showFormPage() {
                                                                     nloc_str +=',most';
                                                                 }
                                                             }  
-                                                            if(loc_data[j].indexOf('Chic') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='chg';
-                                                                }else{
-                                                                    nloc_str +=',chg';
-                                                                }
-                                                            }  
-                                                            if(loc_data[j].indexOf('Geor') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='grg';
-                                                                }else{
-                                                                    nloc_str +=',grg';
-                                                                }
-                                                            }  
-                                                            if(loc_data[j].indexOf('San An') >=0 ){
-                                                                if(nloc_str == 'ant'){
-                                                                    nloc_str ='';
-                                                                }else{
-                                                                    nloc_str +=',ant';
-                                                                }
-                                                            }  
-                                                            if(loc_data[j].indexOf('Hous') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='hou';
-                                                                }else{
-                                                                    nloc_str +=',hou';
-                                                                }
-                                                            }  
-                                                            if(loc_data[j].indexOf('MD/VA') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='mvd';
-                                                                }else{
-                                                                    nloc_str +=',mvd';
-                                                                }
-                                                            }  
-
+                                                            
                                                         }
                                                         var nlocation_data =nloc_str.split(','); 
                                                       
                                                     }else{
                                                         var nlocation_data = new Array();
                                                         loc_str='';
-                                                        if(nPage[i]['population'].indexOf('Cali') >=0 ){ 
-                                                            loc_str ='cali'; 
-                                                        } if(nPage[i]['population'].indexOf('Dal') >=0 ){ 
-                                                            loc_str ='dal';                                                 
-                                                        } if(nPage[i]['population'].indexOf('Pho') >=0 ){
-                                                                loc_str ='phx';
-                                                        } if(nPage[i]['population'].indexOf('Most') >=0 ){
+                                                        if(nPage[i]['population'].indexOf('Most') >=0 ){
                                                             loc_str ='most';
                                                         } if(nPage[i]['population'].indexOf('Hawa') >=0 ){                                              
                                                             loc_str ='hawaii';
                                                         } if(nPage[i]['population'].indexOf('Puer') >=0 ){                                              
                                                             loc_str ='rico';
                                                         }
-                                                      if(nPage[i]['population'].indexOf('Chic') >=0 ){                                              
-                                                            loc_str ='chg';
-                                                        }
-                                                        if(nPage[i]['population'].indexOf('Geor') >=0 ){                                              
-                                                            loc_str ='grg';
-                                                        }
-                                                        if(nPage[i]['population'].indexOf('Hous') >=0 ){                                              
-                                                            loc_str ='hou';
-                                                        }
-                                                        if(nPage[i]['population'].indexOf('San An') >=0 ){                                              
-                                                            loc_str ='ant';
-                                                        }
-                                                        if(nPage[i]['population'].indexOf('MD/VA') >=0 ){                                              
-                                                            loc_str ='mvd';
-                                                        }
+                                                      
                                                         nlocation_data[0]= loc_str ;
                                                     }
                                            
@@ -3115,34 +2523,14 @@ function showFormPage() {
                                             var loc_data = location_selected.split(',');
                                            
                                             for(var j=0; j < loc_data.length ; j++) {
-                                                if(loc_data[j].indexOf('Cali') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='cali';
-                                                    }else{
-                                                        loc_str +=',cali';
-                                                    }
-                                                }
-                                             if(loc_data[j].indexOf('Hawa') >=0 ){
+                                                if(loc_data[j].indexOf('Hawa') >=0 ){
                                                     if(loc_str == ''){
                                                         loc_str ='hawaii';
                                                     }else{
                                                         loc_str +=',hawaii';
                                                     }
                                                 }
-                                                if(loc_data[j].indexOf('Dall') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='dal';
-                                                    }else{
-                                                        loc_str +=',dal';
-                                                    }
-                                                }
-                                                  if(loc_data[j].indexOf('Pho') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='phx';
-                                                    }else{
-                                                        loc_str +=',phx';
-                                                    }
-                                                } if(loc_data[j].indexOf('Puert') >=0 ){
+                                                if(loc_data[j].indexOf('Puert') >=0 ){
                                                     if(loc_str == ''){
                                                         loc_str ='rico';
                                                     }else{
@@ -3156,75 +2544,19 @@ function showFormPage() {
                                                         loc_str +=',most';
                                                     }
                                                 }  
-                                                if(loc_data[j].indexOf('Chic') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='chg';
-                                                    }else{
-                                                        loc_str +=',chg';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('Geor') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='grg';
-                                                    }else{
-                                                        loc_str +=',grg';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('San An') >=0 ){
-                                                    if(loc_str == 'ant'){
-                                                        loc_str ='';
-                                                    }else{
-                                                        loc_str +=',ant';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('Hous') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='hou';
-                                                    }else{
-                                                        loc_str +=',hou';
-                                                    }
-                                                }  
-                                                if(loc_data[j].indexOf('MD/VA') >=0 ){
-                                                    if(loc_str == ''){
-                                                        loc_str ='mvd';
-                                                    }else{
-                                                        loc_str +=',mvd';
-                                                    }
-                                                }  
-
-
+                                               
                                             }
                                             var location_data =loc_str.split(',');
                                         }else{
                                             var location_data = new Array();
-                                            if(location_selected.indexOf('Cali') >=0 ){ 
-                                                loc_str ='cali'; 
-                                            } if(location_selected.indexOf('Dal') >=0 ){ 
-                                                loc_str ='dal';                                                 
-                                            } if(location_selected.indexOf('Pho') >=0 ){
-                                                    loc_str ='phx';
-                                            } if(location_selected.indexOf('Most') >=0 ){
+                                            if(location_selected.indexOf('Most') >=0 ){
                                                 loc_str ='most';
                                             } if(location_selected.indexOf('Hawa') >=0 ){                                              
                                                 loc_str ='hawaii';
                                             } if(location_selected.indexOf('Puer') >=0 ){                                              
                                                 loc_str ='rico';
                                             }
-                                            if(location_selected.indexOf('Chic') >=0 ){                                              
-                                                            loc_str ='chg';
-                                            }
-                                             if(location_selected.indexOf('Geor') >=0 ){                                              
-                                                loc_str ='grg';
-                                            }
-                                            if(location_selected.indexOf('Hous') >=0 ){                                              
-                                                loc_str ='hou';
-                                            }
-                                            if(location_selected.indexOf('San An') >=0 ){                                              
-                                                loc_str ='ant';
-                                            }
-                                            if(location_selected.indexOf('MD/VA') >=0 ){                                              
-                                                loc_str ='mvd';
-                                            }
+                                            
                                             location_data[0]= loc_str;
                                         } 
                                         var hr='';
@@ -3295,41 +2627,11 @@ function showFormPage() {
                                                 else if(ourData[x].filename.indexOf('-h-') >=0 ){
                                                      title = ourData[x].title + " (Hawaii)";  
                                                 }
-                                                else if(ourData[x].filename.indexOf('-c-') >=0 ){
-                                                     title = ourData[x].title + " (California)";                                                    
-                                                 
-                                                }
-                                                else if(ourData[x].filename.indexOf('-d-') >=0 ){
-                                                     title = ourData[x].title + " (Dallas)";                                                    
-                                                 
-                                                }
-                                                else if(ourData[x].filename.indexOf('-p-') >=0 ){
-                                                     title = ourData[x].title + " (Phoenix)";                                                    
-                                                 
-                                                }
+                                               
                                                 else if(ourData[x].filename.indexOf('-r-') >=0 ){
                                                      title = ourData[x].title + " (Puerto Rico)";                                                                                                          
                                                 } 
-                                                else if(ourData[x].filename.indexOf('-mvd-') >=0 ){
-                                                     title = ourData[x].title + " (MD/VA/D.C.)";                                                    
-                                                 
-                                                }
-                                                 else if(ourData[x].filename.indexOf('-chg-') >=0 ){
-                                                     title = ourData[x].title + " (Chicago)";                                                    
-                                                 
-                                                }
-                                                 else if(ourData[x].filename.indexOf('-grg-') >=0 ){
-                                                     title = ourData[x].title + " (Georgia)";                                                    
-                                                 
-                                                }
-                                                 else if(ourData[x].filename.indexOf('-hou-') >=0 ){
-                                                     title = ourData[x].title + " (Houston)";                                                    
-                                                 
-                                                }
-                                                 else if(ourData[x].filename.indexOf('-ant-') >=0 ){
-                                                     title = ourData[x].title + " (San Antonio)";                                                    
-                                                 
-                                                } else{ 
+                                               else{ 
                                                     title = ourData[x].title;
                                                 }
                                             }else{
@@ -3347,13 +2649,7 @@ function showFormPage() {
                                                         var loc_data = nPage[i]['population'].split(',');
                                            
                                                         for(var j=0; j < loc_data.length ; j++) {
-                                                            if(loc_data[j].indexOf('Cali') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='cali';
-                                                                }else{
-                                                                    nloc_str +=',cali';
-                                                                }
-                                                            }
+                                                            
                                                             if(loc_data[j].indexOf('Hawa') >=0 ){
                                                                     if(nloc_str == ''){
                                                                         nloc_str ='hawaii';
@@ -3361,20 +2657,7 @@ function showFormPage() {
                                                                         nloc_str +=',hawaii';
                                                                     }
                                                             }
-                                                            if(loc_data[j].indexOf('Dall') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='dal';
-                                                                }else{
-                                                                    nloc_str +=',dal';
-                                                                }
-                                                            }
-                                                              if(loc_data[j].indexOf('Pho') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='phx';
-                                                                }else{
-                                                                    nloc_str +=',phx';
-                                                                }
-                                                            } if(loc_data[j].indexOf('Puert') >=0 ){
+                                                            if(loc_data[j].indexOf('Puert') >=0 ){
                                                                 if(nloc_str == ''){
                                                                     nloc_str ='rico';
                                                                 }else{
@@ -3388,77 +2671,21 @@ function showFormPage() {
                                                                     nloc_str +=',most';
                                                                 }
                                                             }
-                                                             if(loc_data[j].indexOf('Chic') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='chg';
-                                                                }else{
-                                                                    nloc_str +=',chg';
-                                                                }
-                                                            }
-                                                             if(loc_data[j].indexOf('Geor') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='grg';
-                                                                }else{
-                                                                    nloc_str +=',grg';
-                                                                }
-                                                            }
-                                                             if(loc_data[j].indexOf('San An') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='ant';
-                                                                }else{
-                                                                    nloc_str +=',ant';
-                                                                }
-                                                            }
-                                                             if(loc_data[j].indexOf('Hous') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='hou';
-                                                                }else{
-                                                                    nloc_str +=',hou';
-                                                                }
-                                                            }
-                                                             if(loc_data[j].indexOf('MD/VA') >=0 ){
-                                                                if(nloc_str == ''){
-                                                                    nloc_str ='mvd';
-                                                                }else{
-                                                                    nloc_str +=',mvd';
-                                                                }
-                                                            }  
+                                                            
                                                         }
                                                         var nlocation_data =nloc_str.split(','); 
                                                       
                                                     }else{
                                                         var nlocation_data = new Array();
                                                         loc_str='';
-                                                        if(nPage[i]['population'].indexOf('Cali') >=0 ){ 
-                                                            loc_str ='cali'; 
-                                                        } if(nPage[i]['population'].indexOf('Dal') >=0 ){ 
-                                                            loc_str ='dal';                                                 
-                                                        } if(nPage[i]['population'].indexOf('Pho') >=0 ){
-                                                                loc_str ='phx';
-                                                        } if(nPage[i]['population'].indexOf('Most') >=0 ){
+                                                       if(nPage[i]['population'].indexOf('Most') >=0 ){
                                                             loc_str ='most';
                                                         } if(nPage[i]['population'].indexOf('Hawa') >=0 ){                                              
                                                             loc_str ='hawaii';
                                                         } if(nPage[i]['population'].indexOf('Puer') >=0 ){                                              
                                                             loc_str ='rico';
                                                         }
-                                                         if(nPage[i]['population'].indexOf('Chic') >=0 ){                                              
-                                                            loc_str ='chg';
-                                                        }
-
-                                                         if(nPage[i]['population'].indexOf('Geor') >=0 ){                                              
-                                                            loc_str ='grg';
-                                                        }
-                                                         if(nPage[i]['population'].indexOf('Hous') >=0 ){                                              
-                                                            loc_str ='hou';
-                                                        }
-                                                         if(nPage[i]['population'].indexOf('San An') >=0 ){                                              
-                                                            loc_str ='ant';
-                                                        }
-                                                         if(nPage[i]['population'].indexOf('MD/VA') >=0 ){                                              
-                                                            loc_str ='mvd';
-                                                        }
-                                                          
+                                                        
                                                         nlocation_data[0]= loc_str ;
                                                     }
                                            
@@ -3804,13 +3031,7 @@ function showFormPage() {
                             var loc_data = location_selected.split(',');
                            
                             for(var j=0; j < loc_data.length ; j++) {
-                                if(loc_data[j].indexOf('Cali') >=0 ){
-                                    if(loc_str == ''){
-                                        loc_str ='cali';
-                                    }else{
-                                        loc_str +=',cali';
-                                    }
-                                }
+                                
                              if(loc_data[j].indexOf('Hawa') >=0 ){
                                     if(loc_str == ''){
                                         loc_str ='hawaii';
@@ -3818,20 +3039,7 @@ function showFormPage() {
                                         loc_str +=',hawaii';
                                     }
                                 }
-                                if(loc_data[j].indexOf('Dall') >=0 ){
-                                    if(loc_str == ''){
-                                        loc_str ='dal';
-                                    }else{
-                                        loc_str +=',dal';
-                                    }
-                                }
-                                  if(loc_data[j].indexOf('Pho') >=0 ){
-                                    if(loc_str == ''){
-                                        loc_str ='phx';
-                                    }else{
-                                        loc_str +=',phx';
-                                    }
-                                } if(loc_data[j].indexOf('Puert') >=0 ){
+                                if(loc_data[j].indexOf('Puert') >=0 ){
                                     if(loc_str == ''){
                                         loc_str ='rico';
                                     }else{
@@ -3845,74 +3053,19 @@ function showFormPage() {
                                         loc_str +=',most';
                                     }
                                 }  
-                                if(loc_data[j].indexOf('Chic') >=0 ){
-                                    if(loc_str == ''){
-                                        loc_str ='chg';
-                                    }else{
-                                        loc_str +=',chg';
-                                    }
-                                }  
-                                if(loc_data[j].indexOf('Geor') >=0 ){
-                                    if(loc_str == ''){
-                                        loc_str ='grg';
-                                    }else{
-                                        loc_str +=',grg';
-                                    }
-                                }  
-                                if(loc_data[j].indexOf('Hou') >=0 ){
-                                    if(loc_str == ''){
-                                        loc_str ='hou';
-                                    }else{
-                                        loc_str +=',hou';
-                                    }
-                                }  
-                                if(loc_data[j].indexOf('San An') >=0 ){
-                                    if(loc_str == ''){
-                                        loc_str ='ant';
-                                    }else{
-                                        loc_str +=',ant';
-                                    }
-                                }  
-                                if(loc_data[j].indexOf('MD/VA') >=0 ){
-                                    if(loc_str == ''){
-                                        loc_str ='mvd';
-                                    }else{
-                                        loc_str +=',mvd';
-                                    }
-                                }  
 
                             }
                             var location_data =loc_str.split(','); 
                         }else{
                             var location_data = new Array();
-                            if(location_selected.indexOf('Cali') >=0 ){ 
-                                loc_str ='cali'; 
-                            } if(location_selected.indexOf('Dal') >=0 ){ 
-                                loc_str ='dal';                                                 
-                            } if(location_selected.indexOf('Pho') >=0 ){
-                                    loc_str ='phx';
-                            } if(location_selected.indexOf('Most') >=0 ){
+                           if(location_selected.indexOf('Most') >=0 ){
                                 loc_str ='most';
                             } if(location_selected.indexOf('Hawa') >=0 ){                                              
                                 loc_str ='hawaii';
                             } if(location_selected.indexOf('Puer') >=0 ){                                              
                                 loc_str ='rico';
                             }
-                            if(location_selected.indexOf('Chic') >=0 ){                                              
-                                loc_str ='chg';
-                            }
-                            if(location_selected.indexOf('Geor') >=0 ){                                              
-                                loc_str ='grg';
-                            }
-                            if(location_selected.indexOf('San An') >=0 ){                                              
-                                loc_str ='ant';
-                            }
-                            if(location_selected.indexOf('Hous') >=0 ){                                              
-                                loc_str ='hou';
-                            }
-                            if(location_selected.indexOf('MD/VA') >=0 ){                                              
-                                loc_str ='mvd';
-                            }
+                         
                             location_data[0]= loc_str ;
                         }
                         var hr='';
@@ -3991,36 +3144,11 @@ function showFormPage() {
                                 else if(ourData[x].filename.indexOf('-h-') >=0 ){
                                      title = ourData[x].title + " (Hawaii)";  
                                 }
-                                else if(ourData[x].filename.indexOf('-c-') >=0 ){
-                                     title = ourData[x].title + " (California)";                                                    
-                                 
-                                }
-                                else if(ourData[x].filename.indexOf('-d-') >=0 ){
-                                     title = ourData[x].title + " (Dallas)";                                                    
-                                 
-                                }
-                                else if(ourData[x].filename.indexOf('-p-') >=0 ){
-                                     title = ourData[x].title + " (Phoenix)";                                                    
-                                 
-                                }
+                                
                                 else if(ourData[x].filename.indexOf('-r-') >=0 ){
                                      title = ourData[x].title + " (Puerto Rico)";                                                                                                          
                                 }  
-                                 else if(ourData[x].filename.indexOf('-chg-') >=0 ){
-                                     title = ourData[x].title + " (Chicago)";                                                                                                          
-                                }  
-                                 else if(ourData[x].filename.indexOf('-grg-') >=0 ){
-                                     title = ourData[x].title + " (Georgia)";                                                                                                          
-                                }  
-                                 else if(ourData[x].filename.indexOf('-hou-') >=0 ){
-                                     title = ourData[x].title + " (Houston)";                                                                                                          
-                                } 
-                                 else if(ourData[x].filename.indexOf('-mvd-') >=0 ){
-                                     title = ourData[x].title + " (MD/VA/D.C.)";                                                                                                          
-                                }  
-                                 else if(ourData[x].filename.indexOf('-ant-') >=0 ){
-                                     title = ourData[x].title + " (San Antonio)";                                                                                                          
-                                } else{ 
+                                 else{ 
                                      title = ourData[x].title;
                                  }
 
@@ -4048,13 +3176,7 @@ function showFormPage() {
                                         var nloc_data = nPage[i]['population'].split(',');
                            
                                         for(var j=0; j < nloc_data.length ; j++) {
-                                            if(nloc_data[j].indexOf('Cali') >=0 ){
-                                                if(nloc_str == ''){
-                                                    nloc_str ='cali';
-                                                }else{
-                                                    nloc_str +=',cali';
-                                                }
-                                            }
+                                            
                                             if(nloc_data[j].indexOf('Hawa') >=0 ){
                                                     if(nloc_str == ''){
                                                         nloc_str ='hawaii';
@@ -4062,20 +3184,7 @@ function showFormPage() {
                                                         nloc_str +=',hawaii';
                                                     }
                                             }
-                                            if(nloc_data[j].indexOf('Dall') >=0 ){
-                                                if(nloc_str == ''){
-                                                    nloc_str ='dal';
-                                                }else{
-                                                    nloc_str +=',dal';
-                                                }
-                                            }
-                                              if(nloc_data[j].indexOf('Pho') >=0 ){
-                                                if(nloc_str == ''){
-                                                    nloc_str ='phx';
-                                                }else{
-                                                    nloc_str +=',phx';
-                                                }
-                                            } if(nloc_data[j].indexOf('Puert') >=0 ){
+                                            if(nloc_data[j].indexOf('Puert') >=0 ){
                                                 if(nloc_str == ''){
                                                     nloc_str ='rico';
                                                 }else{
@@ -4089,74 +3198,21 @@ function showFormPage() {
                                                     nloc_str +=',most';
                                                 }
                                             }  
-                                            if(nloc_data[j].indexOf('Chic') >=0 ){
-                                                if(nloc_str == ''){
-                                                    nloc_str ='chg';
-                                                }else{
-                                                    nloc_str +=',chg';
-                                                }
-                                            }  
-                                            if(nloc_data[j].indexOf('Geor') >=0 ){
-                                                if(nloc_str == ''){
-                                                    nloc_str ='grg';
-                                                }else{
-                                                    nloc_str +=',grg';
-                                                }
-                                            }  
-                                            if(nloc_data[j].indexOf('Hous') >=0 ){
-                                                if(nloc_str == ''){
-                                                    nloc_str ='hou';
-                                                }else{
-                                                    nloc_str +=',hou';
-                                                }
-                                            }  
-                                            if(nloc_data[j].indexOf('San An') >=0 ){
-                                                if(nloc_str == ''){
-                                                    nloc_str ='ant';
-                                                }else{
-                                                    nloc_str +=',ant';
-                                                }
-                                            }  
-                                            if(nloc_data[j].indexOf('MD/VA') >=0 ){
-                                                if(nloc_str == ''){
-                                                    nloc_str ='mvd';
-                                                }else{
-                                                    nloc_str +=',mvd';
-                                                }
-                                            }  
+                                             
+                                            
 
                                         }
                                          var nlocation_data =loc_str.split(','); 
                                     }else{
                                         var nlocation_data = new Array();
-                                        if(nPage[i]['population'].indexOf('Cali') >=0 ){ 
-                                            nloc_str ='cali'; 
-                                        } if(nPage[i]['population'].indexOf('Dal') >=0 ){ 
-                                            nloc_str ='dal';                                                 
-                                        } if(nPage[i]['population'].indexOf('Pho') >=0 ){
-                                                nloc_str ='phx';
-                                        } if(nPage[i]['population'].indexOf('Most') >=0 ){
+                                       if(nPage[i]['population'].indexOf('Most') >=0 ){
                                             nloc_str ='most';
                                         } if(nPage[i]['population'].indexOf('Hawa') >=0 ){                                              
                                             nloc_str ='hawaii';
                                         } if(nPage[i]['population'].indexOf('Puer') >=0 ){                                              
                                             nloc_str ='rico';
                                         }
-                                        if(nPage[i]['population'].indexOf('Chic') >=0 ){                                              
-                                            nloc_str ='chg';
-                                        }
-                                        if(nPage[i]['population'].indexOf('Geor') >=0 ){                                              
-                                            nloc_str ='grg';
-                                        }
-                                        if(nPage[i]['population'].indexOf('Hous') >=0 ){                                              
-                                            nloc_str ='hou';
-                                        }
-                                        if(nPage[i]['population'].indexOf('San An') >=0 ){                                              
-                                            nloc_str ='ant';
-                                        }
-                                        if(nPage[i]['population'].indexOf('MD/VA') >=0 ){                                              
-                                            nloc_str ='mvd';
-                                        }
+                                        
                                         nlocation_data[0]= loc_str ;
                                     }
 
