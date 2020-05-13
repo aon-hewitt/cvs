@@ -19,8 +19,8 @@ var ContainerId='85392d705ff0c4e25d99';
 var now = new Date();
 var projectId = '7ed2d5fbd98cabe9eb61';
 
-//var applicationId = '6af9084e0eec8c4756c6'; // to be provided for cvs app
- var applicationId = '6d5aa7e34b8be727b8d5';   // prod 03-12
+var applicationId = '6af9084e0eec8c4756c6'; // to be provided for cvs app
+// var applicationId = '6d5aa7e34b8be727b8d5';   // prod 03-12
 //var applicationId = '27862155492e77d5eb4d';
 
 var workflowId = 'cvsWorkflow';
