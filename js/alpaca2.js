@@ -3567,6 +3567,8 @@ function getUniqueValuesOfKey(originalArray, prop) {
 
 function sendEmail() {
     console.log("sending email with draft node Id of " + draftNodeId);
+    console.log("node: ", node);
+
     node.subchain(platform).then(function () {
         // NOTE: this = platform
         var workflowConfig = {};
@@ -3584,25 +3586,40 @@ function sendEmail() {
         workflowConfig.runtime.repositoryId = repositoryId;
         workflowConfig.runtime.branchId = branchId;
 
+        console.log("workflowconfig: ", workflowConfig);
 
         // auth info
         var authInfo = platform.getDriver().authInfo;
+        console.log("authInfo: ", authInfo);
+        console.log("this: ", this);
 
         // find the current user
         this.readDomain(authInfo.principalDomainId).readPrincipal(authInfo.principalId).then(function () {
             //var currentUser = this;
+            console.log("currentUser (commented out): ", this);
+
             var user = authInfo['user'];
             var currentUser = user.email;
-            console.log(currentUser);
 
+            console.log("user: ", user);
+
+            console.log("currentUser (replacement): " , currentUser);
+
+
+            console.log("platform: ", platform);
+            console.log("workflowId: ", workflowId);
             // create workflow and include the current user's email
             this.subchain(platform).createWorkflow(workflowId, workflowConfig).then(function () {
+                console.log("Adding resource node as above: ", node);
+
                 this.addResource(node);
                 var data = {
                     "coreNodeId": node._doc,
                     "draftNodeId": draftNodeId,
                     "email": currentUser
                 }
+                console.log("starting email workflow with this data: ", data);
+
                 this.start(data).then(function () {
                 });
             });
