@@ -77,19 +77,19 @@ function getConfig(){
     };*/
     //PROD 03-12
 
-    config = {
-        "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
-        "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
-        "username": username,
-        "password": password,
-        "baseURL": "https://api.cloudcms.com",
-        "application": "6af9084e0eec8c4756c6"
-    };/*
+    //config = {
+    //    "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
+    //    "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
+    //    "username": username,
+    //    "password": password,
+    //    "baseURL": "https://api.cloudcms.com",
+    //    "application": "6af9084e0eec8c4756c6"
+    //};
     config = {
                    "username": username,
                  "password": password,
                   "baseURL": "/proxy"
-     }*/
+     }
  //  $("#dialog").dialog("close");
     Gitana.connect(config, function(err) {
         if (err) {
@@ -133,23 +133,23 @@ function getPage(callback) {
     };*/
 
     // prod 03-12
-    config   = {
-        "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
-        "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
-       // "username": "06fa5ef3-2815-4c06-90b8-936188d17cb1",
-        //"password": "roY8ZcOnEKbM5ns8a8qjCJg+xXEdyDslz4Ta4EKGWXNKsqjN2ty2yDJ7BJRYEVPjo0MEryrzHCoTsQET23f2Oe8CNqkcY3fGuYlmjOIfcDs=",
-        "username":username,
-        "password":password,
-        "baseURL": "https://api.cloudcms.com",
-        "application": "6af9084e0eec8c4756c6"
-    };
-    /*
+    //config   = {
+    //    "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
+    //    "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
+    //   // "username": "06fa5ef3-2815-4c06-90b8-936188d17cb1",
+    //    //"password": "roY8ZcOnEKbM5ns8a8qjCJg+xXEdyDslz4Ta4EKGWXNKsqjN2ty2yDJ7BJRYEVPjo0MEryrzHCoTsQET23f2Oe8CNqkcY3fGuYlmjOIfcDs=",
+    //    "username":username,
+    //    "password":password,
+    //    "baseURL": "https://api.cloudcms.com",
+    //    "application": "6af9084e0eec8c4756c6"
+    //};
+    
     config = {
                    "username": username,
                  "password": password,
                   "baseURL": "/proxy"
 
-     }*/
+     }
 
     Gitana.connect(config).then(function () {
            platform = this; 
@@ -213,21 +213,21 @@ function getImages(val){
     };*/
 
     // PROD 03-12
-   config = {
-        "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
-        "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
-       // "username": "06fa5ef3-2815-4c06-90b8-936188d17cb1",
-       // "password": "roY8ZcOnEKbM5ns8a8qjCJg+xXEdyDslz4Ta4EKGWXNKsqjN2ty2yDJ7BJRYEVPjo0MEryrzHCoTsQET23f2Oe8CNqkcY3fGuYlmjOIfcDs=",
-        "username":username,
-        "password":password,
-        "baseURL": "https://api.cloudcms.com",
-        "application": "6af9084e0eec8c4756c6"
-    };/*
+   //config = {
+   //     "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
+   //     "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
+   //    // "username": "06fa5ef3-2815-4c06-90b8-936188d17cb1",
+   //    // "password": "roY8ZcOnEKbM5ns8a8qjCJg+xXEdyDslz4Ta4EKGWXNKsqjN2ty2yDJ7BJRYEVPjo0MEryrzHCoTsQET23f2Oe8CNqkcY3fGuYlmjOIfcDs=",
+   //     "username":username,
+   //     "password":password,
+   //     "baseURL": "https://api.cloudcms.com",
+   //     "application": "6af9084e0eec8c4756c6"
+   // };
     config = {
                    "username": username,
                  "password": password,
                   "baseURL": "/proxy"
-     }*/
+     }
    $("#dialog").dialog("close");
     Gitana.connect(config, function(err) {
         if (err) {
@@ -309,33 +309,33 @@ function getImages(val){
 function getAttachments(attach){
      username = $("#txtUsername").val();
     password = $("#txtPassword").val();
-     /* config = {
+    //  config = {
 
-        "clientKey": "71a224e5-0365-4313-8ac7-dd03f82ce883",
-        "clientSecret":  "d6Pjc0+4gtioi10c5BoBZJgmZWX3nt1Htw1knPnRhF1VdTwO2UfPqyRX4fgHglRwSTovqBm1qtfnM0s/nxc7Z69CuhD1EbbbloRUCLqFUiQ=",
-          "username": username,
-        "password": password,
-       // "Username":   "3193b15b-00d8-4226-a5f3-4a8db65da4b2",
-        //"Password":   "65I7K9NLWYs3Ma+g/uEm5KRmHXGzhA7TmysVxYeSmQX9y0Zd7xWPc17viw3o5r7TZ/N2DYsC+qHYrm2VT59rNAeXv861vYW/ySjaiVWoXqQ=",
-        "baseURL": "https://api.cloudcms.com",
-        "application": "27862155492e77d5eb4d" 
-    };*/
+    //    "clientKey": "71a224e5-0365-4313-8ac7-dd03f82ce883",
+    //    "clientSecret":  "d6Pjc0+4gtioi10c5BoBZJgmZWX3nt1Htw1knPnRhF1VdTwO2UfPqyRX4fgHglRwSTovqBm1qtfnM0s/nxc7Z69CuhD1EbbbloRUCLqFUiQ=",
+    //      "username": username,
+    //    "password": password,
+    //   // "Username":   "3193b15b-00d8-4226-a5f3-4a8db65da4b2",
+    //    //"Password":   "65I7K9NLWYs3Ma+g/uEm5KRmHXGzhA7TmysVxYeSmQX9y0Zd7xWPc17viw3o5r7TZ/N2DYsC+qHYrm2VT59rNAeXv861vYW/ySjaiVWoXqQ=",
+    //    "baseURL": "https://api.cloudcms.com",
+    //    "application": "27862155492e77d5eb4d" 
+    //};
     //PROD 03-12
-  config = {
-        "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
-        "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
-       // "username": "06fa5ef3-2815-4c06-90b8-936188d17cb1",
-       // "password": "roY8ZcOnEKbM5ns8a8qjCJg+xXEdyDslz4Ta4EKGWXNKsqjN2ty2yDJ7BJRYEVPjo0MEryrzHCoTsQET23f2Oe8CNqkcY3fGuYlmjOIfcDs=",
-        "username":username,
-        "password":password,
-        "baseURL": "https://api.cloudcms.com",
-        "application": "6af9084e0eec8c4756c6"
-    };/*
+  //config = {
+  //      "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
+  //      "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
+  //     // "username": "06fa5ef3-2815-4c06-90b8-936188d17cb1",
+  //     // "password": "roY8ZcOnEKbM5ns8a8qjCJg+xXEdyDslz4Ta4EKGWXNKsqjN2ty2yDJ7BJRYEVPjo0MEryrzHCoTsQET23f2Oe8CNqkcY3fGuYlmjOIfcDs=",
+  //      "username":username,
+  //      "password":password,
+  //      "baseURL": "https://api.cloudcms.com",
+  //      "application": "6af9084e0eec8c4756c6"
+  //  };
     config = {
                    "username": username,
                  "password": password,
                   "baseURL": "/proxy"
-     }*/
+     }
    $("#dialog").dialog("close");
     Gitana.connect(config, function(err) {
         if (err) {
