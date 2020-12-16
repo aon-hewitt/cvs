@@ -875,7 +875,7 @@ function getPageDetails(nPageData){
                                 "title": value.title,
                                 "priority": '0',
                                 "tileId": pgId.toString(),
-                                "flag":"cvsPage1Draft",
+                                "flag":"cvsPage1",
                                 "section" : value.section,
                                 "population" : value.population,
                                 "language" : value.language,                                
