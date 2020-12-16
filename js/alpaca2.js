@@ -23,7 +23,7 @@ var applicationId = '6af9084e0eec8c4756c6'; // to be provided for cvs app
 // var applicationId = '6d5aa7e34b8be727b8d5';   // prod 03-12
 //var applicationId = '27862155492e77d5eb4d';
 
-var workflowId = 'amexWorkflow';
+var workflowId = 'cvsWorkflow';
 //var emailProviderId = '0ebca2d0dcc9590dc9ae'; // from cvs app
 var emailProviderId = '6b1b6a8e002d85bb28bd';
 var globaLanguage = 'English';
