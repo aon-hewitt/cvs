@@ -19,7 +19,7 @@ var ContainerId='85392d705ff0c4e25d99';
 var now = new Date();
 var projectId = '7ed2d5fbd98cabe9eb61';
 
-var applicationId = '6af9084e0eec8c4756c6'; // to be provided for cvs app
+var applicationId = '810c575db1fd1ce6cef2'; // to be provided for cvs app
 // var applicationId = '6d5aa7e34b8be727b8d5';   // prod 03-12
 //var applicationId = '27862155492e77d5eb4d';
 
@@ -78,12 +78,12 @@ function getConfig(){
     //PROD 03-12
 
     config = {
-        "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
-        "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
+        "clientKey": "7281e1bd-271f-4a2b-bc87-ebb72b282c96",
+        "clientSecret": "qYcA16NY0tRPna22PStQYU4VXjg7Z3/X3WuBZKK9Uwtv5rMTdfq26aBDRIH6aeUf/gA7wmG6dmI/0Gamkd8GRhkyL7GhGu7PNJgjeJ0vuaM=",
         "username": username,
         "password": password,
         "baseURL": "https://api.cloudcms.com",
-        "application": "6af9084e0eec8c4756c6"
+        "application": "810c575db1fd1ce6cef2"
     };/*
     config = {
                    "username": username,
@@ -134,14 +134,14 @@ function getPage(callback) {
 
     // prod 03-12
     config   = {
-        "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
-        "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
+        "clientKey": "7281e1bd-271f-4a2b-bc87-ebb72b282c96",
+        "clientSecret": "qYcA16NY0tRPna22PStQYU4VXjg7Z3/X3WuBZKK9Uwtv5rMTdfq26aBDRIH6aeUf/gA7wmG6dmI/0Gamkd8GRhkyL7GhGu7PNJgjeJ0vuaM=",
        // "username": "06fa5ef3-2815-4c06-90b8-936188d17cb1",
         //"password": "roY8ZcOnEKbM5ns8a8qjCJg+xXEdyDslz4Ta4EKGWXNKsqjN2ty2yDJ7BJRYEVPjo0MEryrzHCoTsQET23f2Oe8CNqkcY3fGuYlmjOIfcDs=",
         "username":username,
         "password":password,
         "baseURL": "https://api.cloudcms.com",
-        "application": "6af9084e0eec8c4756c6"
+        "application": "810c575db1fd1ce6cef2"
     };
     /*
     config = {
@@ -214,14 +214,14 @@ function getImages(val){
 
     // PROD 03-12
    config = {
-        "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
-        "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
+       "clientKey": "7281e1bd-271f-4a2b-bc87-ebb72b282c96",
+       "clientSecret": "qYcA16NY0tRPna22PStQYU4VXjg7Z3/X3WuBZKK9Uwtv5rMTdfq26aBDRIH6aeUf/gA7wmG6dmI/0Gamkd8GRhkyL7GhGu7PNJgjeJ0vuaM=",
        // "username": "06fa5ef3-2815-4c06-90b8-936188d17cb1",
        // "password": "roY8ZcOnEKbM5ns8a8qjCJg+xXEdyDslz4Ta4EKGWXNKsqjN2ty2yDJ7BJRYEVPjo0MEryrzHCoTsQET23f2Oe8CNqkcY3fGuYlmjOIfcDs=",
         "username":username,
         "password":password,
         "baseURL": "https://api.cloudcms.com",
-        "application": "6af9084e0eec8c4756c6"
+       "application": "810c575db1fd1ce6cef2"
     };/*
     config = {
                    "username": username,
@@ -322,14 +322,14 @@ function getAttachments(attach){
     };*/
     //PROD 03-12
   config = {
-        "clientKey": "35b028e7-1f30-47fe-8574-d7ffca4ca967",
-        "clientSecret": "TsPd9+05+Gmz9mrv40/pJ7rE6v3h5nw78vE5mo+iDAAcA6R2IlwngWll+xcXl+pgy38+6//boG1LeAw5deRSQccka0xxU5ZUgRQx5FAf7pY=",
+      "clientKey": "7281e1bd-271f-4a2b-bc87-ebb72b282c96",
+      "clientSecret": "qYcA16NY0tRPna22PStQYU4VXjg7Z3/X3WuBZKK9Uwtv5rMTdfq26aBDRIH6aeUf/gA7wmG6dmI/0Gamkd8GRhkyL7GhGu7PNJgjeJ0vuaM=",
        // "username": "06fa5ef3-2815-4c06-90b8-936188d17cb1",
        // "password": "roY8ZcOnEKbM5ns8a8qjCJg+xXEdyDslz4Ta4EKGWXNKsqjN2ty2yDJ7BJRYEVPjo0MEryrzHCoTsQET23f2Oe8CNqkcY3fGuYlmjOIfcDs=",
         "username":username,
         "password":password,
         "baseURL": "https://api.cloudcms.com",
-        "application": "6af9084e0eec8c4756c6"
+      "application": "810c575db1fd1ce6cef2"
     };/*
     config = {
                    "username": username,
