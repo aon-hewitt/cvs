@@ -259,7 +259,7 @@ function getImages(val){
                              $(".images1").html('');
                              $(".thumbs1").html('');
 
-                            var attachUrl ='https://a980f94f-6083-4374-8d7f-9a4a9f042a9b-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=';
+                            var attachUrl ='https://c86ad18c5ac5758bc6c3-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=';
                             for ( var i=0; i < response['rows'].length; i++){
                                 var data_arr={};
                                 x= response['rows'][i];                               
@@ -367,7 +367,7 @@ function getAttachments(attach){
                             var strHtml='';
                               
 
-                            var attachUrl ='https://a980f94f-6083-4374-8d7f-9a4a9f042a9b-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=';
+                            var attachUrl ='https://c86ad18c5ac5758bc6c3-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=';
                             for ( var i=0; i < response['rows'].length; i++){
                                 var data_arr={};
                                 x= response['rows'][i];                               
@@ -516,7 +516,7 @@ function getAttachments(attach){
                             var strHtml='';
                               
 
-                            var attachUrl ='https://a980f94f-6083-4374-8d7f-9a4a9f042a9b-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=';
+                            var attachUrl ='https://c86ad18c5ac5758bc6c3-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=';
                             for ( var i=0; i < response['rows'].length; i++){
                                 var data_arr={};
                                 x= response['rows'][i];                               
@@ -864,7 +864,7 @@ function getPageDetails(nPageData){
                            // var pgId = Math.floor((Math.random() * 1000) + 1);
 
                             //console.log(multiSelect.toString());
-                            var imgBgURL = 'https://a980f94f-6083-4374-8d7f-9a4a9f042a9b-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=/';
+                            var imgBgURL = 'https://c86ad18c5ac5758bc6c3-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=/';
                             if(value.imageURL != '' || value.imageURL != null){
                                     bgIm = true;
                             }
@@ -1533,7 +1533,7 @@ function getPageDetails(nPageData){
 
                                     if(backgroundImage == 'on'){
                                         var imgUr = document.getElementsByName('imageURL');
-                                        var img= 'https://a980f94f-6083-4374-8d7f-9a4a9f042a9b-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=' + imgUr['imageURL'].value;
+                                        var img= 'https://c86ad18c5ac5758bc6c3-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=' + imgUr['imageURL'].value;
                                         
                                         var tt = document.getElementsByName('title');
  
@@ -1789,7 +1789,7 @@ function showFormPage() {
                                   var d = new Date();
                                 pgId = ((d.getTime()-d.getMilliseconds())/1000);
                                 tId= pgId.toString();
-                                var imgBgURL = 'https://a980f94f-6083-4374-8d7f-9a4a9f042a9b-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=/' + value.imageURL;
+                                var imgBgURL = 'https://c86ad18c5ac5758bc6c3-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=/' + value.imageURL;
                                 console.log(value.imageURL);
                                    var doc_cookie= document.cookie.split(';');
                                  
@@ -2868,7 +2868,7 @@ function showFormPage() {
 
                                     if(backgroundImage == 'on'){
                                         var imgUr = document.getElementsByName('imageURL');
-                                        var img= 'https://a980f94f-6083-4374-8d7f-9a4a9f042a9b-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=' + imgUr[1].value;
+                                        var img= 'https://c86ad18c5ac5758bc6c3-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=' + imgUr[1].value;
                                         console.log(img);
                                         var tt = document.getElementsByName('title');
  
@@ -3415,7 +3415,7 @@ var fl = document.getElementById('myFileUpload5');
 
 $("#uploadFilenameEdit5").on('change keyup paste mouseup', function() {
     $("#myFileName").html($("#uploadFilenameEdit5").val());
-    var tx = "https://a980f94f-6083-4374-8d7f-9a4a9f042a9b-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=";
+    var tx = "https://c86ad18c5ac5758bc6c3-hosted.cloudcms.net/static/test.pdf?repositories=0da4c0b255d99e3fea3a&branches=93ac3d94f366fcaa21c5&node=85392d705ff0c4e25d99&attachment=";
     $("#lnk1").html(tx + $("#uploadFilenameEdit5").val());
 });
 
